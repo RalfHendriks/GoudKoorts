@@ -7,5 +7,7 @@ namespace Goudkoorts
 {
     public class GameController
     {
+        private int Score { get; set; }
+
     }
 }

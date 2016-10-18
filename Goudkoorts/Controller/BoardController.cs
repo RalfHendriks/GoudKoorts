@@ -7,5 +7,18 @@ namespace Goudkoorts
 {
     public class BoardController
     {
+        private List<BaseTile> _startPoints;
+
+
+        public BoardController()
+        {
+
+        }
+
+        private void CreateBoard()
+        {
+
+        }
+
     }
 }

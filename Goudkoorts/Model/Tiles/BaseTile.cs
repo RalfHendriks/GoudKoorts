@@ -5,10 +5,9 @@ using System.Text;
 
 namespace Goudkoorts
 {
-    public abstract class BaseTile : ITile
+    public abstract class BaseTile
     {
-        public ITile Next { get; set; }
-        public ITile Previous { get; set; }
-        public Cart Cart {get; set;}
+        public BaseTile Next { get; set; }
+        public Cart Cart { get; set; }
     }
 }
