@@ -72,7 +72,6 @@
     </Compile>
     <Compile Include="Controller\BoardController.cs" />
     <Compile Include="Controller\GameController.cs" />
-    <Compile Include="Model\Tiles\ITile.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -106,7 +105,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\boat.png" />
+    <Resource Include="Images\building.png" />
+    <Resource Include="Images\cart_empty.png" />
+    <Resource Include="Images\cart_full.png" />
+    <Resource Include="Images\switch_downright.png" />
+    <Resource Include="Images\switch_leftdown.png" />
+    <Resource Include="Images\switch_leftup.png" />
+    <Resource Include="Images\switch_upright.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sea.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

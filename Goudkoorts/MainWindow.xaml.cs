@@ -20,9 +20,43 @@ namespace Goudkoorts
     /// </summary>
     public partial class MainWindow : Window
     {
+        private GameController _game;
+
         public MainWindow()
         {
             InitializeComponent();
+            initGrid(12,9);
+            _game = new GameController(this);
+        }
+
+        public void addVisualObject(BaseTile tile)
+        {
+            Image img = new Image();
+            img.Visibility = Visibility.Visible;
+            img.Source = new BitmapImage(new Uri(@"Images/" + "building" + ".PNG", UriKind.Relative));
+            img.Width = 50;
+            img.Height = 50;
+            tPart.Children.Add(img);
+            Random r = new Random();
+            Grid.SetColumn(img, r.Next(0,13));
+            Grid.SetRow(img, r.Next(0,10));
+        }
+
+        private void initGrid(int xSize, int ySize)
+        {
+            for (int i = 0; i < xSize; i++)
+            {
+                ColumnDefinition gridCol = new ColumnDefinition();
+                gridCol.Name = "x" + i;
+                tPart.ColumnDefinitions.Add(gridCol);
+            }
+
+            for (int i = 0; i < ySize; i++)
+            {
+                RowDefinition rowCol = new RowDefinition();
+                rowCol.Name = "y" + i;
+                tPart.RowDefinitions.Add(rowCol);
+            }
         }
     }
 }
