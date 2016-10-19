@@ -55,8 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\FileParser.cs" />
     <Compile Include="Model\Tiles\BaseTile.cs" />
     <Compile Include="Model\Cart.cs" />
+    <Compile Include="Model\Tiles\TileType.cs" />
+    <Compile Include="Model\Tiles\TileDirection.cs" />
     <Compile Include="Model\Tiles\RestTile.cs" />
     <Compile Include="Model\Ship.cs" />
     <Compile Include="Model\Tiles\ShipTile.cs" />
