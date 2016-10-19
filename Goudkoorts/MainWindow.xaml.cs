@@ -23,6 +23,8 @@ namespace Goudkoorts
         public MainWindow()
         {
             InitializeComponent();
+
+            BoardController bc = new BoardController();
         }
     }
 }
