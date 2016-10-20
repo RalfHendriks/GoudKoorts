@@ -122,6 +122,31 @@
   <ItemGroup>
     <Resource Include="Images\sea.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Boat.png" />
+    <Resource Include="Assets\Images\CartEmpty.png" />
+    <Resource Include="Assets\Images\CartFull.png" />
+    <Resource Include="Assets\Images\RestTileHorizontal.png" />
+    <Resource Include="Assets\Images\RestTileVertical.png" />
+    <Resource Include="Assets\Images\ShipTileHorizontal.png" />
+    <Resource Include="Assets\Images\ShipTileVertical.png" />
+    <Resource Include="Assets\Images\TileDownRight.png" />
+    <Resource Include="Assets\Images\TileHorizontal.png" />
+    <Resource Include="Assets\Images\TileLeftDown.png" />
+    <Resource Include="Assets\Images\TileLeftUp.png" />
+    <Resource Include="Assets\Images\TileUpRight.png" />
+    <Resource Include="Assets\Images\TileVertical.png" />
+    <Resource Include="Assets\Levels\level.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\StartTileHorizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\SwitchTileDownRight.png" />
+    <Resource Include="Assets\Images\SwitchTileLeftDown.png" />
+    <Resource Include="Assets\Images\SwitchTileLeftUp.png" />
+    <Resource Include="Assets\Images\SwitchTileUpRight.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
