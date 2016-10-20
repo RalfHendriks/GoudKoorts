@@ -14,6 +14,7 @@ namespace Goudkoorts.Controller
     {
         private readonly string[] _file;
         private List<BaseTile> _tiles = new List<BaseTile>();
+        private List<BaseTile> _switches = new List<BaseTile>();
 
         public FileParser(string path)
         {
@@ -24,6 +25,11 @@ namespace Goudkoorts.Controller
         public List<BaseTile> GetTiles()
         {
             return _tiles;
+        }
+
+        public List<BaseTile> GetSwitches()
+        {
+            return _switches;
         }
 
         private void ParseFile()
@@ -117,6 +123,7 @@ namespace Goudkoorts.Controller
 
                 if(tile.Next != null)
                     tile.Next.Prev = tile;
+                
             }
         }
 
