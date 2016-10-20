@@ -21,6 +21,11 @@ namespace Goudkoorts.Controller
             ParseFile();
         } 
 
+        public List<BaseTile> GetTiles()
+        {
+            return _tiles;
+        }
+
         private void ParseFile()
         {
             bool chain = false;
@@ -100,13 +105,19 @@ namespace Goudkoorts.Controller
             Point posFrom = new Point { X = Int32.Parse(aPosFrom[0]), Y = Int32.Parse(aPosFrom[1]) };
 
             // Get position out of second column
-            var aPosTo = column[0].Trim().Split(',');
+            var aPosTo = column[1].Trim().Split(',');
             Point posTo = new Point { X = Int32.Parse(aPosTo[0]), Y = Int32.Parse(aPosTo[1]) };
 
             // Chain them
-            BaseTile tile = _tiles.First(item => item.Pos == posFrom);
-            tile.Next = _tiles.First(item => item.Pos == posTo);
-            tile.Next.Prev = tile;
+            BaseTile tile = _tiles.FirstOrDefault(item => item.Pos == posFrom);
+
+            if(tile != null)
+            {
+                tile.Next = _tiles.FirstOrDefault(item => item.Pos == posTo);
+
+                if(tile.Next != null)
+                    tile.Next.Prev = tile;
+            }
         }
 
     }

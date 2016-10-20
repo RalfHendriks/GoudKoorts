@@ -16,11 +16,11 @@ namespace Goudkoorts
 
         public BoardController()
         {
-            /*OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
                 FileParser fp = new FileParser(openFileDialog.FileName);
-            }*/
+            }
         }
         
        /* private void CreateStartTiles()
