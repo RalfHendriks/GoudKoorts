@@ -58,6 +58,7 @@
     <Compile Include="Controller\FileParser.cs" />
     <Compile Include="Model\Tiles\BaseTile.cs" />
     <Compile Include="Model\Cart.cs" />
+    <Compile Include="Model\Tiles\StartTile.cs" />
     <Compile Include="Model\Tiles\TileType.cs" />
     <Compile Include="Model\Tiles\TileDirection.cs" />
     <Compile Include="Model\Tiles\RestTile.cs" />
@@ -110,7 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\boat.png" />
-    <Resource Include="Images\building.png" />
+    <Resource Include="Images\StartTile.png" />
     <Resource Include="Images\cart_empty.png" />
     <Resource Include="Images\cart_full.png" />
     <Resource Include="Images\switch_downright.png" />

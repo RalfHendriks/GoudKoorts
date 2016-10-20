@@ -33,7 +33,7 @@ namespace Goudkoorts
         {
             Image img = new Image();
             img.Visibility = Visibility.Visible;
-            img.Source = new BitmapImage(new Uri(@"Images/" + "cart_full" + ".PNG", UriKind.Relative));
+            img.Source = new BitmapImage(new Uri(@"Images/" + tile.GetType().ToString().Split('.').Last() + ".PNG", UriKind.Relative));
             img.Width = 50;
             img.Height = 50;
             tPart.Children.Add(img);

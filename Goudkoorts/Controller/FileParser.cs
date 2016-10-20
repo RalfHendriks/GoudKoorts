@@ -74,7 +74,7 @@ namespace Goudkoorts.Controller
             switch (column[1].Trim())
             {
                 case "Tile":
-                    tile = new StartTile();
+                    tile = new Tile();
                     break;
                 case "Start":
                     tile = new StartTile();
@@ -89,7 +89,7 @@ namespace Goudkoorts.Controller
                     tile = new ShipTile();
                     break;
                 default:
-                    tile = new StartTile();
+                    tile = new Tile();
                     break;
             }
 
