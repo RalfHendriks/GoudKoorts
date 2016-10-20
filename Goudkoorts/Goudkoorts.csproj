@@ -58,6 +58,7 @@
     <Compile Include="Controller\FileParser.cs" />
     <Compile Include="Model\Tiles\BaseTile.cs" />
     <Compile Include="Model\Cart.cs" />
+    <Compile Include="Model\Tiles\StartTile.cs" />
     <Compile Include="Model\Tiles\TileType.cs" />
     <Compile Include="Model\Tiles\TileDirection.cs" />
     <Compile Include="Model\Tiles\RestTile.cs" />
