@@ -38,7 +38,7 @@ namespace Goudkoorts
             img.Height = 50;
             tPart.Children.Add(img);
             Grid.SetColumn(img, (int)tile.Pos.X);
-            Grid.SetRow(img, (int)tile.Pos.Y);
+            Grid.SetRow(img, 7 - (int)tile.Pos.Y);
         }
 
         private void initGrid(int xSize, int ySize)
