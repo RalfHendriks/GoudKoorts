@@ -25,7 +25,7 @@ namespace Goudkoorts
         public MainWindow()
         {
             InitializeComponent();
-            initGrid(12,9);
+            initGrid(12,8);
             _game = new GameController(this);
         }
 
@@ -33,13 +33,12 @@ namespace Goudkoorts
         {
             Image img = new Image();
             img.Visibility = Visibility.Visible;
-            img.Source = new BitmapImage(new Uri(@"Images/" + "building" + ".PNG", UriKind.Relative));
+            img.Source = new BitmapImage(new Uri(@"Images/" + "cart_full" + ".PNG", UriKind.Relative));
             img.Width = 50;
             img.Height = 50;
             tPart.Children.Add(img);
-            Random r = new Random();
-            Grid.SetColumn(img, r.Next(0,13));
-            Grid.SetRow(img, r.Next(0,10));
+            Grid.SetColumn(img, (int)tile.Pos.X);
+            Grid.SetRow(img, (int)tile.Pos.Y);
         }
 
         private void initGrid(int xSize, int ySize)
