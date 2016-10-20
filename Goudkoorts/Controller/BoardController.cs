@@ -12,17 +12,27 @@ namespace Goudkoorts
     {
         private List<BaseTile> _startPoints = new List<BaseTile>();
         private List<BaseTile> _switches = new List<BaseTile>();
-
+        private FileParser _fp;
 
         public BoardController()
+        {
+            OpenLevel();
+        }
+
+        public void OpenLevel()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == true)
             {
-                FileParser fp = new FileParser(openFileDialog.FileName);
+                _fp = new FileParser(openFileDialog.FileName);
             }
         }
-        
+
+        public List<BaseTile> GetTiles()
+        {
+            return _fp.GetTiles();
+        }
+
        /* private void CreateStartTiles()
         {
             _startPoints.Add(new Tile { Pos = new Point { X = 1, Y = 6 }, Type = "horizontal" });

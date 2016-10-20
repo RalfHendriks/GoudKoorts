@@ -19,14 +19,25 @@ namespace Goudkoorts
             _board = new BoardController();
             _gameTimer = new DispatcherTimer();
 
-            _gameTimer.Interval = TimeSpan.FromMilliseconds(200);
+            initLevel();
+
+            _gameTimer.Interval = TimeSpan.FromSeconds(1);
             _gameTimer.Tick += Game_Timer;
             _gameTimer.Start();
+
+        }
+
+        public void initLevel()
+        {
+            List<BaseTile> tiles = _board.GetTiles();
+            foreach (BaseTile tile in tiles)
+            {
+                _view.addVisualObject(tile);
+            }
         }
 
         private void Game_Timer(object sender, EventArgs e)
         {
-            _view.addVisualObject(null);
             Console.WriteLine(e);
         }
     }
