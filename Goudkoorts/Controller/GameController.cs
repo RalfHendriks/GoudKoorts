@@ -9,6 +9,7 @@ namespace Goudkoorts
     public class GameController
     {
         private int Score { get; set; }
+        private int[] _startY = new int[3] { 1, 3, 5 };
         private BoardController _board;
         private DispatcherTimer _gameTimer;
         private MainWindow _view;
@@ -39,17 +40,41 @@ namespace Goudkoorts
 
         private void Game_Timer(object sender, EventArgs e)
         {
+            int tPoint = r.Next(1, 4);
             if (CartStart())
             {
                 Cart c = new Cart();
-                _view.AddCart(c);
+                _view.PlaceCart(_startY[tPoint - 1]);
+                InsertCart(c, _startY[tPoint - 1]);
             }
-            _view.MoveObjects();
+
+            foreach (BaseTile tile in _board.GetTiles())
+            {
+                if (tile.Cart != null)
+                {
+                    _view.MoveCart(tile.Cart, tile.Next.Pos);
+                }
+            }
+            Console.WriteLine(tPoint);
         }
 
         private bool CartStart()
         {
             return r.Next(0, 20) < 7 ? true : false;
+        }
+
+        private void InsertCart(Cart c, int startPoint)
+        {
+            foreach (BaseTile tile in _board.GetTiles())
+            {
+                if (tile.GetType() ==  typeof(StartTile))
+                {
+                    if(tile.Pos.Y == startPoint)
+                    {
+                        tile.Cart = c;
+                    }
+                }
+            }
         }
     }
 }

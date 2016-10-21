@@ -41,13 +41,21 @@ namespace Goudkoorts
             Grid.SetRow(img, 7 - (int)tile.Pos.Y);
         }
 
-        public void AddCart(Cart c, int startPoint)
+        public void PlaceCart(int start)
         {
-
+            Image img = new Image();
+            img.Visibility = Visibility.Visible;
+            img.Source = new BitmapImage(new Uri(@"Assets/Images/CartFull.png", UriKind.Relative));
+            img.Width = 50;
+            img.Height = 50;
+            tPart.Children.Add(img);
+            Grid.SetColumn(img, 0);
+            Grid.SetRow(img, 7 - start);
         }
 
-        public void MoveObjects()
+        public void MoveCart(Cart c, Point New)
         {
+            tPart.Children.Remove(c);
 
         }
 
