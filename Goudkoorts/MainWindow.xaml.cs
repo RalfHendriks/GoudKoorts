@@ -41,6 +41,16 @@ namespace Goudkoorts
             Grid.SetRow(img, 7 - (int)tile.Pos.Y);
         }
 
+        public void AddCart(Cart c, int startPoint)
+        {
+
+        }
+
+        public void MoveObjects()
+        {
+
+        }
+
         private void initGrid(int xSize, int ySize)
         {
             for (int i = 0; i < xSize; i++)
