@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
@@ -79,6 +81,15 @@ namespace Goudkoorts
             tPart.Children.Add(img);
             Grid.SetColumn(img, 0);
             Grid.SetRow(img, 7 - start);
+        }
+
+        public void MoveShip()
+        {
+            Canvas.SetLeft(Ship, Canvas.GetLeft(Ship) - 2);
+            if (Canvas.GetLeft(Ship) == 374)
+                _game.DockShip();
+            if ((Canvas.GetLeft(Ship) + Ship.Width) <= -30)
+                Canvas.SetLeft(Ship, 600);
         }
 
         public void MoveCart(Point Old, Point New)

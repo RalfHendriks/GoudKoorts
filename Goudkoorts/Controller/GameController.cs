@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace Goudkoorts
@@ -12,22 +13,48 @@ namespace Goudkoorts
         private int Score { get; set; }
         private int[] _startY = new int[3] { 1, 3, 5 };
         private BoardController _board;
+        private Ship _ship;
         private DispatcherTimer _gameTimer;
+        private DispatcherTimer _shipTimer;
         private MainWindow _view;
         private Random r;
 
         public GameController(MainWindow view)
         {
             _view = view;
+            _ship = new Ship();
             _board = new BoardController();
             _gameTimer = new DispatcherTimer();
+            _shipTimer = new DispatcherTimer();
             r = new Random();
             initLevel();
+
+            _shipTimer.Interval = TimeSpan.FromMilliseconds(20);
+            _shipTimer.Tick += ShipTimerTick;
+            _shipTimer.Start();
 
             _gameTimer.Interval = TimeSpan.FromMilliseconds(1000);
             _gameTimer.Tick += GameTimer;
             _gameTimer.Start();
 
+        }
+
+        public void DockShip()
+        {
+            _ship.IsDocked = true;
+        }
+
+        public void EmptyShip()
+        {
+            _ship.CurrentLoad = 0;
+        }
+
+        private void ShipTimerTick(object sender, EventArgs e)
+        {
+            if(_ship.CurrentLoad == 0 && !_ship.IsDocked)
+                _view.MoveShip();
+            if (_ship.IsFull())
+                _view.MoveShip();
         }
 
         public void initLevel()
