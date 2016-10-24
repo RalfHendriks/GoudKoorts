@@ -23,7 +23,7 @@ namespace Goudkoorts
             r = new Random();
             initLevel();
 
-            _gameTimer.Interval = TimeSpan.FromSeconds(1);
+            _gameTimer.Interval = TimeSpan.FromMilliseconds(500);
             _gameTimer.Tick += Game_Timer;
             _gameTimer.Start();
 
@@ -41,6 +41,19 @@ namespace Goudkoorts
         private void Game_Timer(object sender, EventArgs e)
         {
             int tPoint = r.Next(1, 4);
+            List<BaseTile> tileList = _board.GetTiles();
+            for (int i = tileList.Count; i-- > 0;)
+            {
+                if(tileList[i].Cart != null)
+                {
+                    Cart t = tileList[i].Cart;
+                    tileList[i].Next.Cart = t;
+                    tileList[i].Cart = null;
+                    _view.MoveCart(tileList[i].Pos, tileList[i].Next.Pos);
+                }
+            }
+
+            Console.WriteLine(tPoint);
             if (CartStart())
             {
                 Cart c = new Cart();
@@ -48,14 +61,6 @@ namespace Goudkoorts
                 InsertCart(c, _startY[tPoint - 1]);
             }
 
-            foreach (BaseTile tile in _board.GetTiles())
-            {
-                if (tile.Cart != null)
-                {
-                    _view.MoveCart(tile.Cart, tile.Next.Pos);
-                }
-            }
-            Console.WriteLine(tPoint);
         }
 
         private bool CartStart()
