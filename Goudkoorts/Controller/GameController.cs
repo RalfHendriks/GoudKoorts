@@ -47,8 +47,8 @@ namespace Goudkoorts
             {
                 if(tileList[i].Cart != null)
                 {
-                    if (!CheckCartCollision(tileList[i]))
-                        GameOver();
+                    //if (!CheckCartCollision(tileList[i]))
+                    //    GameOver();
 
                     Cart t = tileList[i].Cart;
                     if (tileList[i].Next == null)
@@ -85,11 +85,17 @@ namespace Goudkoorts
 
         private bool CheckCartCollision(BaseTile tile)
         {
+            if (tile.Next == null)
+                return true;
+
             return tile.Next.Cart == null;
         }
 
         private bool CanMoveThroughSwitch(BaseTile tile)
         {
+            if (tile.Next == null)
+                return true;
+
             return tile.Equals(tile.Next.Prev);
         }
 
