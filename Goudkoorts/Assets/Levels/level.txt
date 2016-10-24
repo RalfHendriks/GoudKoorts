@@ -2,17 +2,18 @@
 #
 # (coord, tile, direction)
 #
-1,0:	Rest:	Horizontal
-2,0:	Rest:	Horizontal
-3,0:	Rest:	Horizontal
-4,0:	Rest:	Horizontal
-5,0:	Rest:	Horizontal
-6,0:	Rest:	Horizontal
-7,0:	Rest:	Horizontal
-8,0:	Rest:	Horizontal
-9,0:	Tile:	Horizontal
-10,0:	Tile:	Horizontal
+
 11,0:	Tile:	LeftUp
+10,0:	Tile:	Horizontal
+9,0:	Tile:	Horizontal
+8,0:	Rest:	Horizontal
+7,0:	Rest:	Horizontal
+6,0:	Rest:	Horizontal
+5,0:	Rest:	Horizontal
+4,0:	Rest:	Horizontal
+3,0:	Rest:	Horizontal
+2,0:	Rest:	Horizontal
+1,0:	Rest:	Horizontal
 0,1:	Start:	Horizontal
 1,1:	Tile:	Horizontal
 2,1:	Tile:	Horizontal
@@ -35,35 +36,35 @@
 6,3:	Tile:	LeftDown
 8,3:	Tile:	DownRight
 9,3:	Tile:	LeftUp
+3,5:	Tile:	LeftDown
 3,4:	Switch:	UpRight
 4,4:	Tile:	Horizontal
 5,4:	Switch:	LeftUp
+9,5:	Tile:	LeftDown
 9,4:	Switch:	UpRight
 10,4:	Tile:	Horizontal
 11,4:	Tile:	LeftUp
 0,5:	Start:	Horizontal
 1,5:	Tile:	Horizontal
 2,5:	Tile:	Horizontal
-3,5:	Tile:	LeftDown
 5,5:	Tile:	DownRight
 6,5:	Tile:	Horizontal
 7,5:	Tile:	Horizontal
 8,5:	Tile:	Horizontal
-9,5:	Tile:	LeftDown
 11,5:	Tile:	Vertical
 11,6:	Tile:	Vertical
-0,7:	Tile:	Horizontal
-1,7:	Tile:	Horizontal
-2,7:	Tile:	Horizontal
-3,7:	Tile:	Horizontal
-4,7:	Tile:	Horizontal
-5,7:	Tile:	Horizontal
-6,7:	Tile:	Horizontal
-7,7:	Tile:	Horizontal
-8,7:	Tile:	Horizontal
-9,7:	Ship:	Horizontal
-10,7:	Tile:	Horizontal
 11,7:	Tile:	LeftDown
+10,7:	Tile:	Horizontal
+9,7:	Ship:	Horizontal
+8,7:	Tile:	Horizontal
+7,7:	Tile:	Horizontal
+6,7:	Tile:	Horizontal
+5,7:	Tile:	Horizontal
+4,7:	Tile:	Horizontal
+3,7:	Tile:	Horizontal
+2,7:	Tile:	Horizontal
+1,7:	Tile:	Horizontal
+0,7:	Tile:	Horizontal
 
 #
 # Connections below

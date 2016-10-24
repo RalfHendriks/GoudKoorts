@@ -94,7 +94,6 @@ namespace Goudkoorts
                 }
             }
 
-            Console.WriteLine(tPoint);
             if (CartStart())
             {
                 Cart c = new Cart();

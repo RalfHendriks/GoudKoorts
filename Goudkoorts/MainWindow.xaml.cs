@@ -98,7 +98,8 @@ namespace Goudkoorts
             tPart.Children.Remove(rowItem);
             tPart.Children.Add(rowItem);
             Grid.SetColumn(rowItem, (int)New.X);
-            Grid.SetRow(rowItem, 7 - (int)New.Y);
+            Console.WriteLine((int)New.Y);
+            Grid.SetRow(rowItem, (7 - (int)New.Y));
 
             //tPart.Children.Remove(c);
 
