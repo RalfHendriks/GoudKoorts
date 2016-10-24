@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace Goudkoorts
@@ -46,10 +47,23 @@ namespace Goudkoorts
             {
                 if(tileList[i].Cart != null)
                 {
+                    if (!CheckCartCollision(tileList[i]))
+                        GameOver();
+
                     Cart t = tileList[i].Cart;
-                    tileList[i].Next.Cart = t;
-                    tileList[i].Cart = null;
-                    _view.MoveCart(tileList[i].Pos, tileList[i].Next.Pos);
+                    if (tileList[i].Next == null)
+                    {
+                        tileList[i].Cart = null;
+                        _view.RemoveCart(tileList[i].Pos);
+                    } else
+                    {
+                        if (CanMoveThroughSwitch(tileList[i]))
+                        {
+                            tileList[i].Next.Cart = t;
+                            tileList[i].Cart = null;
+                            _view.MoveCart(tileList[i].Pos, tileList[i].Next.Pos);
+                        }
+                    }
                 }
             }
 
@@ -61,6 +75,22 @@ namespace Goudkoorts
                 InsertCart(c, _startY[tPoint - 1]);
             }
 
+        }
+
+        private void GameOver()
+        {
+            _gameTimer.Stop();
+            MessageBox.Show("Je hebt " + Score + " aantal punten.", "Game over");
+        }
+
+        private bool CheckCartCollision(BaseTile tile)
+        {
+            return tile.Next.Cart == null;
+        }
+
+        private bool CanMoveThroughSwitch(BaseTile tile)
+        {
+            return tile.Equals(tile.Next.Prev);
         }
 
         private bool CartStart()

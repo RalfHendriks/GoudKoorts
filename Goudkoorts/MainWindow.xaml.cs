@@ -92,6 +92,12 @@ namespace Goudkoorts
 
         }
 
+        public void RemoveCart(Point Old)
+        {
+            Image rowItem = (Image)tPart.Children.Cast<UIElement>().Where(i => Grid.GetRow(i) == (7 - Old.Y) && Grid.GetColumn(i) == Old.X).Last();
+            tPart.Children.Remove(rowItem);
+        }
+
         private void initSwitches()
         {
             var f = Directory.GetFiles("../../Assets/Images","SwitchTile*");
