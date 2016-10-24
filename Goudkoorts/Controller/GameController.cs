@@ -9,19 +9,21 @@ namespace Goudkoorts
     public class GameController
     {
         private int Score { get; set; }
+        private int[] _startY = new int[3] { 1, 3, 5 };
         private BoardController _board;
         private DispatcherTimer _gameTimer;
         private MainWindow _view;
+        private Random r;
 
         public GameController(MainWindow view)
         {
             _view = view;
             _board = new BoardController();
             _gameTimer = new DispatcherTimer();
-
+            r = new Random();
             initLevel();
 
-            _gameTimer.Interval = TimeSpan.FromSeconds(1);
+            _gameTimer.Interval = TimeSpan.FromMilliseconds(500);
             _gameTimer.Tick += Game_Timer;
             _gameTimer.Start();
 
@@ -38,7 +40,46 @@ namespace Goudkoorts
 
         private void Game_Timer(object sender, EventArgs e)
         {
-            Console.WriteLine(e);
+            int tPoint = r.Next(1, 4);
+            List<BaseTile> tileList = _board.GetTiles();
+            for (int i = tileList.Count; i-- > 0;)
+            {
+                if(tileList[i].Cart != null)
+                {
+                    Cart t = tileList[i].Cart;
+                    tileList[i].Next.Cart = t;
+                    tileList[i].Cart = null;
+                    _view.MoveCart(tileList[i].Pos, tileList[i].Next.Pos);
+                }
+            }
+
+            Console.WriteLine(tPoint);
+            if (CartStart())
+            {
+                Cart c = new Cart();
+                _view.PlaceCart(_startY[tPoint - 1]);
+                InsertCart(c, _startY[tPoint - 1]);
+            }
+
+        }
+
+        private bool CartStart()
+        {
+            return r.Next(0, 20) < 7 ? true : false;
+        }
+
+        private void InsertCart(Cart c, int startPoint)
+        {
+            foreach (BaseTile tile in _board.GetTiles())
+            {
+                if (tile.GetType() ==  typeof(StartTile))
+                {
+                    if(tile.Pos.Y == startPoint)
+                    {
+                        tile.Cart = c;
+                    }
+                }
+            }
         }
     }
 }

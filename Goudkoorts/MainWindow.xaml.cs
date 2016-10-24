@@ -41,12 +41,37 @@ namespace Goudkoorts
             Grid.SetRow(img, 7 - (int)tile.Pos.Y);
         }
 
+        public void PlaceCart(int start)
+        {
+            Image img = new Image();
+            img.Visibility = Visibility.Visible;
+            img.Source = new BitmapImage(new Uri(@"Assets/Images/CartFull.png", UriKind.Relative));
+            img.Width = 50;
+            img.Height = 50;
+            tPart.Children.Add(img);
+            Grid.SetColumn(img, 0);
+            Grid.SetRow(img, 7 - start);
+        }
+
+        public void MoveCart(Point Old, Point New)
+        {
+            Image rowItem = (Image)tPart.Children.Cast<UIElement>().Where(i => Grid.GetRow(i) == (7 - Old.Y) && Grid.GetColumn(i) == Old.X).Last();
+            tPart.Children.Remove(rowItem);
+            tPart.Children.Add(rowItem);
+            Grid.SetColumn(rowItem, (int)New.X);
+            Grid.SetRow(rowItem, 7 - (int)New.Y);
+
+            //tPart.Children.Remove(c);
+
+        }
+
         private void initGrid(int xSize, int ySize)
         {
             for (int i = 0; i < xSize; i++)
             {
                 ColumnDefinition gridCol = new ColumnDefinition();
                 gridCol.Name = "x" + i;
+                gridCol.MouseMove += GridCol_MouseMove;
                 tPart.ColumnDefinitions.Add(gridCol);
             }
 
@@ -54,8 +79,21 @@ namespace Goudkoorts
             {
                 RowDefinition rowCol = new RowDefinition();
                 rowCol.Name = "y" + i;
+                rowCol.MouseMove += RowCol_MouseMove;
                 tPart.RowDefinitions.Add(rowCol);
             }
+        }
+
+        private void RowCol_MouseMove(object sender, MouseEventArgs e)
+        {
+            RowDefinition r = (RowDefinition)sender;
+            Console.WriteLine(r.Name);
+        }
+
+        private void GridCol_MouseMove(object sender, MouseEventArgs e)
+        {
+            ColumnDefinition c = (ColumnDefinition)sender;
+            Console.WriteLine(c.Name);
         }
     }
 }
