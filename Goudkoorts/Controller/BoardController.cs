@@ -33,6 +33,12 @@ namespace Goudkoorts
             return _fp.GetTiles();
         }
 
+        public SwitchTile GetSwitchByPoint(Point p)
+        {
+            var b = _fp.GetSwitches().Where(x => x.Pos.X == p.X && x.Pos.Y == p.Y);
+            return (SwitchTile)_fp.GetSwitches().Where(x => x.Pos.Equals(p)).First();
+        }
+
        /* private void CreateStartTiles()
         {
             _startPoints.Add(new Tile { Pos = new Point { X = 1, Y = 6 }, Type = "horizontal" });

@@ -58,6 +58,7 @@ namespace Goudkoorts
         private void Img_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image img = (Image)sender;
+            _game.TurnSwitch(new Point(Grid.GetColumn(img),7 - Grid.GetRow(img)));
             img.Source = TurnSwitch(img.Source.ToString().Split('/').Last().Split('.').First());
             img.UpdateLayout();
         }

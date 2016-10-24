@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace Goudkoorts
@@ -80,6 +81,11 @@ namespace Goudkoorts
                     }
                 }
             }
+        }
+
+        public void TurnSwitch(Point p)
+        {
+            _board.GetSwitchByPoint(p).Switch();
         }
     }
 }
