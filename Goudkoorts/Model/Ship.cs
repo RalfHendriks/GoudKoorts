@@ -15,5 +15,10 @@ namespace Goudkoorts
         {
             _maxLoad = 500;
         }
+
+        public bool IsFull()
+        {
+            return CurrentLoad >= _maxLoad ? true : false;
+        }
     }
 }
