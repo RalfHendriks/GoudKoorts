@@ -23,8 +23,8 @@ namespace Goudkoorts
             r = new Random();
             initLevel();
 
-            _gameTimer.Interval = TimeSpan.FromMilliseconds(500);
-            _gameTimer.Tick += Game_Timer;
+            _gameTimer.Interval = TimeSpan.FromMilliseconds(1000);
+            _gameTimer.Tick += GameTimer;
             _gameTimer.Start();
 
         }
@@ -38,7 +38,7 @@ namespace Goudkoorts
             }
         }
 
-        private void Game_Timer(object sender, EventArgs e)
+        private void GameTimer(object sender, EventArgs e)
         {
             int tPoint = r.Next(1, 4);
             List<BaseTile> tileList = _board.GetTiles();
