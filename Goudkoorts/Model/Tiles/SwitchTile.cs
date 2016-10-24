@@ -8,8 +8,28 @@ namespace Goudkoorts
 {
     public class SwitchTile : BaseTile
     {
-        public BaseTile DisconnectedTile;
         public TileType Type { get; set; }
+
+        public override BaseTile ChainTiles(BaseTile tileTo)
+        {
+            if(tileTo != null)
+            {
+                tileTo.Prev = this;
+
+                if (this.Next == null)
+                {
+                    this.Next = tileTo;
+                    this.Type = TileType.Backward;
+                }
+                else
+                {
+                    this.DisconnectedTile = tileTo;
+                    this.Type = TileType.Forward;
+                }
+            }
+
+            return tileTo;
+        }
 
         public void Switch()
         {

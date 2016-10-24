@@ -15,6 +15,7 @@ namespace Goudkoorts.Controller
         private readonly string[] _file;
         private List<BaseTile> _tiles = new List<BaseTile>();
         private List<BaseTile> _switches = new List<BaseTile>();
+        private List<BaseTile> _startTiles = new List<BaseTile>();
 
         public FileParser(string path)
         {
@@ -30,6 +31,11 @@ namespace Goudkoorts.Controller
         public List<BaseTile> GetSwitches()
         {
             return _switches;
+        }
+
+        public List<BaseTile> GetStartTiles()
+        {
+            return _startTiles;
         }
 
         private void ParseFile()
@@ -49,7 +55,7 @@ namespace Goudkoorts.Controller
                     continue;
                 }
 
-                // Check if ready for chain
+                // Check if ready for chaining
                 if (!chain)
                     ParseLine(line);
                 else
@@ -69,29 +75,8 @@ namespace Goudkoorts.Controller
             var aPos = column[0].Trim().Split(',');
             Point pos = new Point { X = Int32.Parse(aPos[0]), Y = Int32.Parse(aPos[1]) };
 
-            // Get type
-            BaseTile tile;
-            switch (column[1].Trim())
-            {
-                case "Tile":
-                    tile = new Tile();
-                    break;
-                case "Start":
-                    tile = new StartTile();
-                    break;
-                case "Rest":
-                    tile = new RestTile();
-                    break;
-                case "Switch":
-                    tile = new SwitchTile();
-                    break;
-                case "Ship":
-                    tile = new ShipTile();
-                    break;
-                default:
-                    tile = new Tile();
-                    break;
-            }
+            // Create tile
+            BaseTile tile = CreateTileByString(column[1].Trim());
 
             // Get direction
             TileDirection direction = (TileDirection)Enum.Parse(typeof(TileDirection), column[2].Trim());
@@ -118,16 +103,38 @@ namespace Goudkoorts.Controller
             Point posTo = new Point { X = Int32.Parse(aPosTo[0]), Y = Int32.Parse(aPosTo[1]) };
 
             // Chain them
-            BaseTile tile = _tiles.FirstOrDefault(item => item.Pos == posFrom);
+            BaseTile tileFrom = _tiles.FirstOrDefault(item => item.Pos == posFrom);
+            BaseTile tileTo = _tiles.FirstOrDefault(item => item.Pos == posTo);
+            tileFrom.ChainTiles(tileTo);
+        }
 
-            if(tile != null)
+        private BaseTile CreateTileByString(string tileName)
+        {
+            BaseTile tile;
+            switch (tileName)
             {
-                tile.Next = _tiles.FirstOrDefault(item => item.Pos == posTo);
-
-                if(tile.Next != null)
-                    tile.Next.Prev = tile;
-                
+                case "Tile":
+                    tile = new Tile();
+                    break;
+                case "Start":
+                    tile = new StartTile();
+                    _startTiles.Add(tile);
+                    break;
+                case "Rest":
+                    tile = new RestTile();
+                    break;
+                case "Switch":
+                    tile = new SwitchTile();
+                    _switches.Add(tile);
+                    break;
+                case "Ship":
+                    tile = new ShipTile();
+                    break;
+                default:
+                    tile = new Tile();
+                    break;
             }
+            return tile;
         }
 
     }
