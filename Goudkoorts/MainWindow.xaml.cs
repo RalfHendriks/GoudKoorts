@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace Goudkoorts
 {
@@ -32,6 +33,8 @@ namespace Goudkoorts
             initSwitches();
             initGrid(12,8);
             _game = new GameController(this);
+
+            SetShipLoad(10);
         }
 
         public void addVisualObject(BaseTile tile)
@@ -86,10 +89,32 @@ namespace Goudkoorts
         public void MoveShip()
         {
             Canvas.SetLeft(Ship, Canvas.GetLeft(Ship) - 2);
+            Canvas.SetLeft(shipLoad, Canvas.GetLeft(shipLoad) - 2);
+
             if (Canvas.GetLeft(Ship) == 374)
                 _game.DockShip();
             if ((Canvas.GetLeft(Ship) + Ship.Width) <= -30)
                 Canvas.SetLeft(Ship, 600);
+        }
+        
+        public void SetShipLoad(int num)
+        {
+            shipLoad.Children.Clear();
+            for(int i = 0; i < num; i++)
+            {
+                AddLoadToShip(1, 1 + (12 * i));
+            }
+        }
+
+        private void AddLoadToShip(int top, int left)
+        {
+            Rectangle rect = new Rectangle();
+            rect.Width = 10;
+            rect.Height = 10;
+            Canvas.SetLeft(rect, left);
+            Canvas.SetTop(rect, top);
+            rect.Fill = new SolidColorBrush(Colors.Black);
+            shipLoad.Children.Add(rect);
         }
 
         public void MoveCart(Point Old, Point New)
