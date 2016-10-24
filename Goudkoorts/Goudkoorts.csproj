@@ -110,32 +110,70 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Images\Boat.png" />
-    <Resource Include="Assets\Images\CartEmpty.png" />
-    <Resource Include="Assets\Images\CartFull.png" />
-    <Resource Include="Assets\Images\RestTileHorizontal.png" />
-    <Resource Include="Assets\Images\RestTileVertical.png" />
-    <Resource Include="Assets\Images\ShipTileHorizontal.png" />
-    <Resource Include="Assets\Images\ShipTileVertical.png" />
-    <Resource Include="Assets\Images\TileDownRight.png" />
-    <Resource Include="Assets\Images\TileHorizontal.png" />
-    <Resource Include="Assets\Images\TileLeftDown.png" />
-    <Resource Include="Assets\Images\TileLeftUp.png" />
-    <Resource Include="Assets\Images\TileUpRight.png" />
-    <Resource Include="Assets\Images\TileVertical.png" />
+    <Resource Include="Assets\Images\Boat.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\CartEmpty.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\CartFull.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\RestTileHorizontal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\RestTileVertical.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\ShipTileHorizontal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\ShipTileVertical.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\TileDownRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\TileHorizontal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\TileLeftDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\TileLeftUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\TileUpRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\TileVertical.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Levels\level.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Images\StartTileHorizontal.png" />
+    <Resource Include="Assets\Images\StartTileHorizontal.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Images\SwitchTileDownRight.png" />
-    <Resource Include="Assets\Images\SwitchTileLeftDown.png" />
-    <Resource Include="Assets\Images\SwitchTileLeftUp.png" />
-    <Resource Include="Assets\Images\SwitchTileUpRight.png" />
+    <Resource Include="Assets\Images\SwitchTileDownRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\SwitchTileLeftDown.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\SwitchTileLeftUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Images\SwitchTileUpRight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Images\sea.png" />
+    <Resource Include="Assets\Images\sea.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
