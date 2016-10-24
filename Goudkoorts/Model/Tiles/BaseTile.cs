@@ -15,5 +15,20 @@ namespace Goudkoorts
         public BaseTile DisconnectedTile { get; set; }
         public Cart Cart { get; set; }
         public TileDirection Direction { get; set; }
+
+        public virtual BaseTile ChainTiles(BaseTile tileTo)
+        {
+            if (tileTo != null)
+            {
+                this.Next = tileTo;
+
+                if (tileTo.Prev == null)
+                    tileTo.Prev = this;
+                else
+                    tileTo.DisconnectedTile = this;
+            }
+
+            return tileTo;
+        }
     }
 }
