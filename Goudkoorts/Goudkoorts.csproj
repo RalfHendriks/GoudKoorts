@@ -110,19 +110,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\boat.png" />
-    <Resource Include="Images\StartTile.png" />
-    <Resource Include="Images\cart_empty.png" />
-    <Resource Include="Images\cart_full.png" />
-    <Resource Include="Images\switch_downright.png" />
-    <Resource Include="Images\switch_leftdown.png" />
-    <Resource Include="Images\switch_leftup.png" />
-    <Resource Include="Images\switch_upright.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\sea.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\Images\Boat.png" />
     <Resource Include="Assets\Images\CartEmpty.png" />
     <Resource Include="Assets\Images\CartFull.png" />
@@ -146,6 +133,9 @@
     <Resource Include="Assets\Images\SwitchTileLeftDown.png" />
     <Resource Include="Assets\Images\SwitchTileLeftUp.png" />
     <Resource Include="Assets\Images\SwitchTileUpRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\Sea.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

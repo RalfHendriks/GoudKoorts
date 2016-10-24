@@ -12,6 +12,7 @@ namespace Goudkoorts
         public Point Pos { get; set; }
         public BaseTile Prev { get; set; }
         public BaseTile Next { get; set; }
+        public BaseTile DisconnectedTile { get; set; }
         public Cart Cart { get; set; }
         public TileDirection Direction { get; set; }
     }

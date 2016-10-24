@@ -8,7 +8,6 @@ namespace Goudkoorts
 {
     public class SwitchTile : BaseTile
     {
-        public BaseTile DisconnectedTile;
         public TileType Type { get; set; }
 
         public void Switch()

@@ -122,11 +122,24 @@ namespace Goudkoorts.Controller
 
             if(tile != null)
             {
-                tile.Next = _tiles.FirstOrDefault(item => item.Pos == posTo);
-
                 if(tile.Next != null)
+                {
+                    tile.DisconnectedTile = _tiles.FirstOrDefault(item => item.Pos == posTo);
+                }
+                else
+                {
+                    tile.Next = _tiles.FirstOrDefault(item => item.Pos == posTo);
+                }
+
+
+                if (tile.Next.Prev != null)
+                {
+                    tile.Next.DisconnectedTile = tile;
+                }
+                else
+                {
                     tile.Next.Prev = tile;
-                
+                }
             }
         }
 
