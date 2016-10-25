@@ -54,7 +54,11 @@ namespace Goudkoorts
             if(_ship.CurrentLoad == 0 && !_ship.IsDocked)
                 _view.MoveShip();
             if (_ship.IsFull())
+            {
+                _ship.IsDocked = false;
                 _view.MoveShip();
+            }
+
         }
 
         public void initLevel()
@@ -68,14 +72,14 @@ namespace Goudkoorts
 
         private void GameTimer(object sender, EventArgs e)
         {
-            int tPoint = r.Next(1, 4);
+            int tPoint = 3;
             List<BaseTile> tileList = _board.GetTiles();
             for (int i = tileList.Count; i-- > 0;)
             {
                 if(tileList[i].Cart != null)
                 {
-                    //if (!CheckCartCollision(tileList[i]))
-                    //    GameOver();
+                    if (!CheckCartCollision(tileList[i]))
+                        GameOver();
 
                     Cart t = tileList[i].Cart;
                     if (tileList[i].Next == null)
@@ -89,6 +93,13 @@ namespace Goudkoorts
                             tileList[i].Next.Cart = t;
                             tileList[i].Cart = null;
                             _view.MoveCart(tileList[i].Pos, tileList[i].Next.Pos);
+                            if (tileList[i].Next.GetType() == typeof(ShipTile) && _ship.IsDocked)
+                            {
+                                _view.EmptyCart();
+                                _ship.CurrentLoad++;
+                                Score++;
+                                _view.SetShipLoad(_ship.CurrentLoad);
+                            }
                         }
                     }
                 }
@@ -127,7 +138,7 @@ namespace Goudkoorts
 
         private bool CartStart()
         {
-            return r.Next(0, 20) < 7 ? true : false;
+            return r.Next(0, 20) < 18 ? true : false;
         }
 
         private void InsertCart(Cart c, int startPoint)

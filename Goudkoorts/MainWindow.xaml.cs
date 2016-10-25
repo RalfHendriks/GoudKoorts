@@ -33,8 +33,6 @@ namespace Goudkoorts
             initSwitches();
             initGrid(12,8);
             _game = new GameController(this);
-
-            SetShipLoad(10);
         }
 
         public void addVisualObject(BaseTile tile)
@@ -90,11 +88,17 @@ namespace Goudkoorts
         {
             Canvas.SetLeft(Ship, Canvas.GetLeft(Ship) - 2);
             Canvas.SetLeft(shipLoad, Canvas.GetLeft(shipLoad) - 2);
-
+            Console.WriteLine(Canvas.GetLeft(Ship));
             if (Canvas.GetLeft(Ship) == 374)
                 _game.DockShip();
             if ((Canvas.GetLeft(Ship) + Ship.Width) <= -30)
+            {
+                _game.EmptyShip();
+                shipLoad.Children.Clear();
+                Canvas.SetLeft(shipLoad, 630);
                 Canvas.SetLeft(Ship, 600);
+            }
+                
         }
         
         public void SetShipLoad(int num)
@@ -110,7 +114,7 @@ namespace Goudkoorts
         {
             Rectangle rect = new Rectangle();
             rect.Width = 10;
-            rect.Height = 10;
+            rect.Height = 20;
             Canvas.SetLeft(rect, left);
             Canvas.SetTop(rect, top);
             rect.Fill = new SolidColorBrush(Colors.Black);
@@ -123,11 +127,17 @@ namespace Goudkoorts
             tPart.Children.Remove(rowItem);
             tPart.Children.Add(rowItem);
             Grid.SetColumn(rowItem, (int)New.X);
-            Console.WriteLine((int)New.Y);
             Grid.SetRow(rowItem, (7 - (int)New.Y));
 
             //tPart.Children.Remove(c);
 
+        }
+
+        public void EmptyCart()
+        {
+            Image rowItem = (Image)tPart.Children.Cast<UIElement>().Where(i => Grid.GetRow(i) == 0 && Grid.GetColumn(i) == 9).Last();
+            rowItem.Source = new BitmapImage(new Uri(@"Assets/Images/CartEmpty.png", UriKind.Relative));
+            rowItem.UpdateLayout();
         }
 
         public void RemoveCart(Point Old)

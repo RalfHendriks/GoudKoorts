@@ -13,7 +13,7 @@ namespace Goudkoorts
 
         public Ship()
         {
-            _maxLoad = 500;
+            _maxLoad = 10;
         }
 
         public bool IsFull()
