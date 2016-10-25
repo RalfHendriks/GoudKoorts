@@ -73,27 +73,42 @@ namespace Goudkoorts
 
         private void GameTimer(object sender, EventArgs e)
         {
-            int tPoint = 3;
+            int tPoint = r.Next(1,4);
             List<BaseTile> tileList = _board.GetTiles();
             for (int i = tileList.Count; i-- > 0;)
             {
+                // Check if cart on tile
                 if(tileList[i].Cart != null)
                 {
-                    if (!CheckCartCollision(tileList[i]))
-                        GameOver();
-
                     Cart t = tileList[i].Cart;
+                    // Check if tile has next tile
                     if (tileList[i].Next == null)
                     {
-                        tileList[i].Cart = null;
-                        _view.RemoveCart(tileList[i].Pos);
+                        // Check if rest tile
+                        if(CheckIfRestTile((tileList[i])))
+                        {
+                            if(CheckIfRestTile(tileList[i].Prev))
+                                tileList[i].Prev.Next = null;
+                        } else
+                        {
+                            tileList[i].Cart = null;
+                            _view.RemoveCart(tileList[i].Pos);
+                        }
                     } else
                     {
+                        // Check if switch is good positioned
                         if (CanMoveThroughSwitch(tileList[i]))
                         {
+                            // Check if next tile has cart (collision)
+                            if (!CheckCartCollision(tileList[i]))
+                                GameOver();
+
+
                             tileList[i].Next.Cart = t;
                             tileList[i].Cart = null;
                             _view.MoveCart(tileList[i].Pos, tileList[i].Next.Pos);
+
+                            // Check if shipTile
                             if (tileList[i].Next.GetType() == typeof(ShipTile) && _ship.IsDocked)
                             {
                                 _view.EmptyCart();
@@ -127,6 +142,11 @@ namespace Goudkoorts
             MessageBox.Show("Je hebt " + Score + " aantal punten.", "Game over");
         }
 
+        private bool CheckIfRestTile(BaseTile tile)
+        {
+            return tile.GetType() == typeof(RestTile);
+        }
+
         private bool CheckCartCollision(BaseTile tile)
         {
             if (tile.Next == null)
@@ -145,7 +165,7 @@ namespace Goudkoorts
 
         private bool CartStart()
         {
-            return r.Next(0, 20) < 18 ? true : false;
+            return r.Next(0, 20) < 7 ? true : false;
         }
 
         private void InsertCart(Cart c, int startPoint)
