@@ -2,28 +2,12 @@
 #
 # (coord, tile, direction)
 #
-11,0:	Tile:	LeftUp
-10,0:	Tile:	Horizontal
-9,0:	Tile:	Horizontal
-8,0:	Rest:	Horizontal
-7,0:	Rest:	Horizontal
-6,0:	Rest:	Horizontal
-5,0:	Rest:	Horizontal
-4,0:	Rest:	Horizontal
-3,0:	Rest:	Horizontal
-2,0:	Rest:	Horizontal
-1,0:	Rest:	Horizontal
-0,1:	Start:	Horizontal
 1,1:	Tile:	Horizontal
 2,1:	Tile:	Horizontal
 3,1:	Tile:	Horizontal
 4,1:	Tile:	Horizontal
 5,1:	Tile:	Horizontal
 6,1:	Tile:	LeftUp
-8,1:	Tile:	UpRight
-9,1:	Tile:	Horizontal
-10,1:	Tile:	Horizontal
-11,1:	Tile:	LeftDown
 0,3:	Start:	Horizontal
 1,3:	Tile:	Horizontal
 2,3:	Tile:	Horizontal
@@ -40,6 +24,22 @@
 6,2:	Switch:	UpRight
 7,2:	Tile:	Horizontal
 8,2:	Switch:	LeftUp
+8,1:	Tile:	UpRight
+9,1:	Tile:	Horizontal
+10,1:	Tile:	Horizontal
+11,1:	Tile:	LeftDown
+11,0:	Tile:	LeftUp
+10,0:	Tile:	Horizontal
+9,0:	Tile:	Horizontal
+8,0:	Rest:	Horizontal
+7,0:	Rest:	Horizontal
+6,0:	Rest:	Horizontal
+5,0:	Rest:	Horizontal
+4,0:	Rest:	Horizontal
+3,0:	Rest:	Horizontal
+2,0:	Rest:	Horizontal
+1,0:	Rest:	Horizontal
+0,1:	Start:	Horizontal
 8,3:	Tile:	DownRight
 9,3:	Tile:	LeftUp
 5,5:	Tile:	DownRight
