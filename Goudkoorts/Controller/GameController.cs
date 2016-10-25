@@ -47,6 +47,7 @@ namespace Goudkoorts
         public void EmptyShip()
         {
             _ship.CurrentLoad = 0;
+            UpdateScore(10);
         }
 
         private void ShipTimerTick(object sender, EventArgs e)
@@ -97,7 +98,7 @@ namespace Goudkoorts
                             {
                                 _view.EmptyCart();
                                 _ship.CurrentLoad++;
-                                Score++;
+                                UpdateScore(1);
                                 _view.SetShipLoad(_ship.CurrentLoad);
                             }
                         }
@@ -112,6 +113,12 @@ namespace Goudkoorts
                 InsertCart(c, _startY[tPoint - 1]);
             }
 
+        }
+
+        private void UpdateScore(int Score)
+        {
+            this.Score = this.Score + Score;
+            _view.UpdateScore(this.Score);
         }
 
         private void GameOver()

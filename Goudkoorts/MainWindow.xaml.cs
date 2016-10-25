@@ -113,12 +113,18 @@ namespace Goudkoorts
         private void AddLoadToShip(int top, int left)
         {
             Rectangle rect = new Rectangle();
+            rect.Margin = new Thickness(rect.Margin.Left + 10, rect.Margin.Top, 0, 0);
             rect.Width = 10;
             rect.Height = 20;
             Canvas.SetLeft(rect, left);
             Canvas.SetTop(rect, top);
             rect.Fill = new SolidColorBrush(Colors.Black);
             shipLoad.Children.Add(rect);
+        }
+
+        public void UpdateScore(int Score)
+        {
+            tScore.Text = "Score: " + Score;
         }
 
         public void MoveCart(Point Old, Point New)

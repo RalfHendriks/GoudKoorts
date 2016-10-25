@@ -16,6 +16,7 @@
                 <ImageBrush ImageSource="/Assets/Images/Sea.png"/>
             </Grid.Background>
             <Canvas>
+                <TextBlock x:Name="tScore" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Score: 0"></TextBlock>
                 <Image x:Name="Ship" Height="30" Width="180" Source="Assets/Images/Boat.png" HorizontalAlignment="Right" VerticalAlignment="Bottom" Canvas.Left="506" Canvas.Top="70"/>
                 <Canvas x:Name="shipLoad" Background="AliceBlue" Width="120" Height="24" Canvas.Left="536" Canvas.Top="73">
                     
