@@ -71,53 +71,27 @@ namespace Goudkoorts
             }
         }
 
+        public void MoveCart(Point oldPoint, Point newPoint)
+        {
+            _view.MoveCart(oldPoint, newPoint);
+        }
+
         private void GameTimer(object sender, EventArgs e)
         {
             int tPoint = r.Next(1,4);
             List<BaseTile> tileList = _board.GetTiles();
             for (int i = tileList.Count; i-- > 0;)
             {
-                // Check if cart on tile
-                if(tileList[i].Cart != null)
+                BaseTile currentTile = tileList[i];
+                
+                // Do action for specific tile
+                currentTile.DoAction(this);
+
+                // Check for collission
+                if(currentTile.CheckIfCollission())
                 {
-                    Cart t = tileList[i].Cart;
-                    // Check if tile has next tile
-                    if (tileList[i].Next == null)
-                    {
-                        // Check if rest tile
-                        if(CheckIfRestTile((tileList[i])))
-                        {
-                            if(CheckIfRestTile(tileList[i].Prev))
-                                tileList[i].Prev.Next = null;
-                        } else
-                        {
-                            tileList[i].Cart = null;
-                            _view.RemoveCart(tileList[i].Pos);
-                        }
-                    } else
-                    {
-                        // Check if switch is good positioned
-                        if (CanMoveThroughSwitch(tileList[i]))
-                        {
-                            // Check if next tile has cart (collision)
-                            if (!CheckCartCollision(tileList[i]))
-                                GameOver();
-
-
-                            tileList[i].Next.Cart = t;
-                            tileList[i].Cart = null;
-                            _view.MoveCart(tileList[i].Pos, tileList[i].Next.Pos);
-
-                            // Check if shipTile
-                            if (tileList[i].Next.GetType() == typeof(ShipTile) && _ship.IsDocked)
-                            {
-                                _view.EmptyCart();
-                                _ship.CurrentLoad++;
-                                UpdateScore(1);
-                                _view.SetShipLoad(_ship.CurrentLoad);
-                            }
-                        }
-                    }
+                    GameOver();
+                    break;
                 }
             }
 
@@ -130,7 +104,32 @@ namespace Goudkoorts
 
         }
 
-        private void UpdateScore(int Score)
+        public bool ShipIsDocked()
+        {
+            return _ship.IsDocked;
+        }
+
+        public void EmptyCart()
+        {
+            _view.EmptyCart();
+        }
+
+        public void RemoveCart(Point pos)
+        {
+            _view.RemoveCart(pos);
+        }
+
+        public void AddShipLoad()
+        {
+            _ship.CurrentLoad++;
+        }
+
+        public void RefreshShipLoad()
+        {
+            _view.SetShipLoad(_ship.CurrentLoad);
+        }
+
+        public void UpdateScore(int Score)
         {
             this.Score = this.Score + Score;
             _view.UpdateScore(this.Score);

@@ -30,5 +30,61 @@ namespace Goudkoorts
 
             return tileTo;
         }
+
+        public virtual void DoAction(GameController gameController)
+        {
+            if (Cart != null)
+            {
+                if (CanMove())
+                {
+                    MoveCart();
+                    gameController.MoveCart(Pos, Next.Pos);
+                }
+
+                if (ShouldRemoveCart())
+                {
+                    Cart = null;
+                    gameController.RemoveCart(Pos);
+                }
+            }
+        }
+
+        public virtual bool CheckIfCollission()
+        {
+            if (Cart != null && Next != null && Next.Prev == this && Next.Cart != null)
+                return true;
+            else
+                return false;
+        }
+
+        protected virtual bool CanMove()
+        {
+            if (Next != null && Next.Prev != null && Next.Prev == this && Next.CanPlaceCart())
+                return true;
+            else
+                return false;
+        }
+
+        protected virtual void MoveCart()
+        {
+            Next.Cart = Cart;
+            Cart = null;
+        }
+
+        protected virtual bool CanPlaceCart()
+        {
+            if (Cart == null)
+                return true;
+            else
+                return false;
+        }
+
+        protected virtual bool ShouldRemoveCart()
+        {
+            if (Next == null)
+                return true;
+            else
+                return false;
+        }
     }
 }
